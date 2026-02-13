@@ -1,0 +1,19 @@
+# Home page
+- name: Home
+  href: index.md
+
+# Getting started section
+- name: Getting Started
+  items:
+    - name: Installation
+      href: installation.md
+    - name: Quick Start
+      href: QUICKSTART.md
+    - name: Upgrade
+      href: upgrade.md
+
+# Development section
+- name: Development
+  items:
+    - name: Release Process
+      href: release.md

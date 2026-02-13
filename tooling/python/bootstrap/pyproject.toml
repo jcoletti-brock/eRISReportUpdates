@@ -1,0 +1,22 @@
+[project]
+name = "agentkit"
+version = "1.0.0"
+description = "CLI tool for bootstrapping agent files from templates"
+readme = "README.md"
+authors = [
+    { name = "jpoitras", email = "jpoitras@brocksolutions.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.15.0",
+    "rich>=13.9.0",
+    "readchar>=4.2.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+agentkit = "agentkit.agentkit_cli:app"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"

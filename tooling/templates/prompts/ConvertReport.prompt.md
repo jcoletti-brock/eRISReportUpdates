@@ -20,21 +20,34 @@ Follow these instructions when converting BIRT reports from iFIX to Ignition:
 4. Match extracted tags against the CSV lookup file
    - Reference the `Required Tools and Approaches` section for CSV processing tools
    - Reference the `Tag Lookup Matching` section below for more details
-5. Report findings and request user confirmation
+5. If mismatches are found, generate a mismatch summary document
+   - Reference the `Mismatch Summary Generation` section below for more details
+6. Report findings and request user confirmation (only if all tags matched)
    - Reference the `User Confirmation` section below for more details
-6. If user confirms, perform the conversion
+7. If user confirms, perform the conversion
    - Reference the `Required Tools and Approaches` section for file conversion tools
    - Reference the `Report Conversion` section below for more details
-7. Generate a conversion summary document
+8. Generate a conversion summary document
    - Reference the `Summary Generation` section below for more details
 
 ## Required Tools and Approaches
 
 To ensure consistent execution across conversion runs:
 
+### Python Code Execution
+**PREFERRED:** Use `mcp_pylance_mcp_s_pylanceRunCodeSnippet` tool for all Python operations
+- Eliminates shell quoting/escaping issues (especially critical on Windows)
+- Handles file paths automatically (forward slashes work seamlessly)
+- Supports clean multi-line Python code execution
+- Provides proper exit codes and formatted output
+
+**FALLBACK:** If Pylance MCP tool unavailable, use terminal: `python -c` one-liners
+- Requires careful path escaping on Windows (use forward slashes: `c:/path/to/file`)
+- May encounter issues with complex string quoting
+
 ### XML Validation
 - Use Python's `xml.etree.ElementTree.parse()` method
-- Execute via terminal: `python -c` one-liner
+- Execute using preferred Python tool (Pylance MCP or terminal)
 - Report any parsing exceptions as validation failures
 
 ### iFIX Tag Extraction
@@ -50,9 +63,10 @@ To ensure consistent execution across conversion runs:
 - Perform exact case-sensitive matching
 
 ### File Conversion
-- Use VS Code's `multi_replace_string_in_file` tool for batch replacements
-- Include sufficient context (3-5 lines) in oldString for unambiguous matching
-- Verify replacement counts match expected instances
+- **PREFERRED:** Use Python string replacement with file I/O (simpler, more reliable)
+- **ALTERNATIVE:** Use VS Code's `multi_replace_string_in_file` tool for batch replacements
+  - Include sufficient context (3-5 lines) in oldString for unambiguous matching
+  - Verify replacement counts match expected instances
 
 ### Conversion Verification
 - **Verify iFIX tag removal:** Use pattern `r'WATH\.[^:]+:'` to count remaining WATH tags (should be 0)
@@ -97,8 +111,78 @@ Use the CSV lookup file located at `src\ifix_to_ign_010152026.csv`:
 - **CRITICAL STOPPING CONDITION:** If any iFIX tag cannot be found in the lookup:
   - Report all unmatched tags to the user
   - List the report file name and the specific tags that have no match
+  - Generate a mismatch summary file in the `eris\output\mismatches` directory (see `Mismatch Summary Generation` section)
   - **STOP ALL PROCESSING** - do not proceed with any conversion
   - Inform the user that the lookup table needs to be updated before conversion can proceed
+
+## Mismatch Summary Generation
+
+When iFIX tags cannot be found in the lookup table, create a mismatch summary file:
+
+1. **Create mismatch summary markdown file:**
+   - Location: `eris\output\mismatches` directory
+   - Filename: Same base name as the report file with `.md` extension
+   - Example: For `Daily Flow Check - Rural v6G.rptdesign`, create `Daily Flow Check - Rural v6G.md`
+
+2. **Mismatch summary content structure:**
+   
+   The mismatch summary file MUST follow this exact format:
+
+   ```markdown
+   # Report Conversion Mismatch Summary: [Report Filename]
+   
+   **Analysis Date:** [Month Day, Year HH:MM AM/PM]
+   **Original File:** `eris\input\reports\[filename]`
+   **Status:** ✗ Conversion Not Possible - Missing Lookup Entries
+   
+   ## Tag Analysis Statistics
+   
+   - Total unique iFIX tags found: [count]
+   - Tags matched in lookup: [count]
+   - Tags NOT matched in lookup: [count]
+   - Match rate: [percentage]%
+   
+   ## Tags NOT Found in Lookup
+   
+   The following iFIX tags were found in the report but do NOT have entries in the lookup table:
+   
+   | iFIX Tag (without WATH. prefix) | Full Tag Path in Report | Instances Found |
+   |--------------------------------|------------------------|----------------|
+   | [tag_name] | WATH.[tag_name]: | [count] |
+   
+   ## Tags Successfully Matched
+   
+   The following iFIX tags were found in both the report and the lookup table:
+   
+   | iFIX Tag Path | Ignition Tag Name (Lookup) | Instances Found |
+   |---------------|----------------------------|----------------|
+   | WATH.[tag]: | [ign_tagname] | [count] |
+   
+   ## Required Action
+   
+   **The lookup table at `src\ifix_to_ign_010152026.csv` must be updated with the missing iFIX tag entries before this report can be converted.**
+   
+   Add entries to the lookup table for all tags listed in the "Tags NOT Found in Lookup" section above. Each entry should include:
+   - `hist_tagname`: The iFIX tag name (without WATH. prefix)
+   - `ign_tagprovider`: The Ignition tag provider
+   - `ign_tagname`: The corresponding Ignition tag path
+   - `ign_fullpath`: The full Ignition tag path
+   - `imaginary`: Whether the tag is imaginary (true/false)
+   
+   After updating the lookup table, re-run the conversion process for this report.
+   ```
+
+   **Formatting Requirements:**
+   - Date format: Use full month name, day, year, and 12-hour time with AM/PM (e.g., "February 13, 2026 09:07 AM")
+   - Tables: Include all tag information with instance counts
+   - Use ✗ symbol for failure indicators
+   - Clearly separate unmatched tags from matched tags
+   - Include match rate percentage calculation
+
+3. **User notification:**
+   - Inform the user that a mismatch summary file has been created
+   - Provide the path to the mismatch summary file
+   - Remind user that the lookup table must be updated before conversion can proceed
 
 ## User Confirmation
 

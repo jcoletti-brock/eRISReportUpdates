@@ -29,7 +29,7 @@
     "blueprintId" : null,
     "dataParams" : {
       "Tag0" : {
-        "tag" : "WATH.MTPSVR2.ATPW00010000QRN.F_CV",
+        "tag" : "IGNW.ATP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -50,7 +50,7 @@
         "interval" : "P1D"
       },
       "Tag1" : {
-        "tag" : "WATH.MTPSVR2.ATPW00020000QRN.F_CV",
+        "tag" : "IGNW.ATP_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -71,7 +71,7 @@
         "interval" : "P1D"
       },
       "Tag2" : {
-        "tag" : "WATH.MTPSVR2.APSW00030000QRN.F_CV",
+        "tag" : "IGNW.APS_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -92,7 +92,7 @@
         "interval" : "P1D"
       },
       "Tag3" : {
-        "tag" : "WATH.MTPSVR2.BMSW00020000QYR.F_CV",
+        "tag" : "IGNW.BMS_PLC01-W0002_0000-QYR",
         "isEnabled" : "true",
         "mode" : "esrYesterdayValue",
         "showUnits" : "false",
@@ -113,7 +113,7 @@
         "interval" : "P1D"
       },
       "Tag4" : {
-        "tag" : "WATH.MTPSVR2.BMSW00030000QRN.F_CV",
+        "tag" : "IGNW.BMS_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -134,7 +134,7 @@
         "interval" : "P1D"
       },
       "Tag5" : {
-        "tag" : "WATH.MTPSVR3.FGSW00010000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -155,7 +155,7 @@
         "interval" : "P1D"
       },
       "Tag6" : {
-        "tag" : "WATH.MTPSVR3.FGSW002A0000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W002A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -176,7 +176,7 @@
         "interval" : "P1D"
       },
       "Tag7" : {
-        "tag" : "WATH.MTPSVR3.FGSW00040000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -197,7 +197,7 @@
         "interval" : "P1D"
       },
       "Tag8" : {
-        "tag" : "WATH.MTPSVR2.G16W00160000QRN.F_CV",
+        "tag" : "IGNW.Cambridge-Galt Wells-G16_PLC01-W0016_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -218,7 +218,7 @@
         "interval" : "P1D"
       },
       "Tag9" : {
-        "tag" : "WATH.MTPSVR2.G18W00180000QRN.F_CV",
+        "tag" : "IGNW.Cambridge-Galt Wells-G18_PLC01-W0018_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -239,7 +239,7 @@
         "interval" : "P1D"
       },
       "Tag10" : {
-        "tag" : "WATH.MTPSVR2.HEPHD01RTQRN.F_CV",
+        "tag" : "IGNW.Rural-Wellesley-HEP_PLC01-HEPHD01RTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -260,7 +260,7 @@
         "interval" : "P1D"
       },
       "Tag11" : {
-        "tag" : "WATH.MTPSVR2.HEPHD02RTQRN.F_CV",
+        "tag" : "IGNW.Rural-Wellesley-HEP_PLC01-HEPHD02RTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -281,7 +281,7 @@
         "interval" : "P1D"
       },
       "Tag12" : {
-        "tag" : "WATH.MTPSVR3.K4CW004C0000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K4C_PLC01-W004C_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -302,7 +302,7 @@
         "interval" : "P1D"
       },
       "Tag13" : {
-        "tag" : "WATH.MTPSVR1.K21W00210000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K21_PLC01-W0021_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -323,7 +323,7 @@
         "interval" : "P1D"
       },
       "Tag14" : {
-        "tag" : "WATH.MTPSVR1.K21W021A0000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K21_PLC01-W021A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -344,7 +344,7 @@
         "interval" : "P1D"
       },
       "Tag15" : {
-        "tag" : "WATH.MTPSVR3.K23W00230000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K23_PLC01-W0023_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -365,7 +365,7 @@
         "interval" : "P1D"
       },
       "Tag16" : {
-        "tag" : "WATH.MTPSVR1.K25W00250000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K25_PLC01-W0025_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -386,7 +386,7 @@
         "interval" : "P1D"
       },
       "Tag17" : {
-        "tag" : "WATH.MTPSVR3.K26W00260000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K26_PLC01-W0026_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -407,7 +407,7 @@
         "interval" : "P1D"
       },
       "Tag18" : {
-        "tag" : "WATH.MTPSVR1.K29W00290000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K29_PLC01-W0029_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -428,7 +428,7 @@
         "interval" : "P1D"
       },
       "Tag19" : {
-        "tag" : "WATH.MTPSVR3.K50W00500000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K50_PLC01-W0050_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -449,7 +449,7 @@
         "interval" : "P1D"
       },
       "Tag20" : {
-        "tag" : "WATH.MTPSVR3.K50W00510000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K50_PLC01-W0051_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -470,7 +470,7 @@
         "interval" : "P1D"
       },
       "Tag21" : {
-        "tag" : "WATH.MTPSVR1.K91W00910000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K91_PLC01-W0091_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -491,7 +491,7 @@
         "interval" : "P1D"
       },
       "Tag22" : {
-        "tag" : "WATH.MTPSVR1.K91W00920000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K91_PLC01-W0092_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -512,7 +512,7 @@
         "interval" : "P1D"
       },
       "Tag23" : {
-        "tag" : "WATH.MTPSVR1.K93W00930000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K93_PLC01-W0093_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -533,7 +533,7 @@
         "interval" : "P1D"
       },
       "Tag24" : {
-        "tag" : "WATH.MTPSVR1.K93W00940000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K93_PLC01-W0094_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -554,7 +554,7 @@
         "interval" : "P1D"
       },
       "Tag43" : {
-        "tag" : "WATH.MTPSVR2.LINW001A0000QRN.F_CV",
+        "tag" : "IGNW.LIN_PLC01-W001A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -575,7 +575,7 @@
         "interval" : "P1D"
       },
       "Tag26" : {
-        "tag" : "WATH.MTPSVR2.LINW00020000QRN.F_CV",
+        "tag" : "IGNW.LIN_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -596,7 +596,7 @@
         "interval" : "P1D"
       },
       "Tag27" : {
-        "tag" : "WATH.MTPSVR2.MYPW00010000QRN.F_CV",
+        "tag" : "IGNW.Rural-Woolwich-MYP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -617,7 +617,7 @@
         "interval" : "P1D"
       },
       "Tag28" : {
-        "tag" : "WATH.MTPSVR2.MYPW00020000QRN.F_CV",
+        "tag" : "IGNW.Rural-Woolwich-MYP_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -638,7 +638,7 @@
         "interval" : "P1D"
       },
       "Tag29" : {
-        "tag" : "WATH.MTPSVR2.MVPW004A0000QRN.F_CV",
+        "tag" : "IGNW.MVP_PLC01-W004A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -659,7 +659,7 @@
         "interval" : "P1D"
       },
       "Tag30" : {
-        "tag" : "WATH.MTPSVR2.MVPW00050000QRN.F_CV",
+        "tag" : "IGNW.MVP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -680,7 +680,7 @@
         "interval" : "P1D"
       },
       "Tag31" : {
-        "tag" : "WATH.MTPSVR3.NDPW00040000QRN.F_CV",
+        "tag" : "IGNW.NDP_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -701,7 +701,7 @@
         "interval" : "P1D"
       },
       "Tag32" : {
-        "tag" : "WATH.MTPSVR3.NDPW00050000QRN.F_CV",
+        "tag" : "IGNW.NDP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -722,7 +722,7 @@
         "interval" : "P1D"
       },
       "Tag33" : {
-        "tag" : "WATH.MTPSVR2.RTPW00050000QRN.F_CV",
+        "tag" : "IGNW.RTP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -743,7 +743,7 @@
         "interval" : "P1D"
       },
       "Tag34" : {
-        "tag" : "WATH.MTPSVR2.RTPW00060000QRN.F_CV",
+        "tag" : "IGNW.RTP_PLC01-W0006_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -764,7 +764,7 @@
         "interval" : "P1D"
       },
       "Tag35" : {
-        "tag" : "WATH.MTPSVR2.STCW00020000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -785,7 +785,7 @@
         "interval" : "P1D"
       },
       "Tag36" : {
-        "tag" : "WATH.MTPSVR2.STCW00030000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -806,7 +806,7 @@
         "interval" : "P1D"
       },
       "Tag37" : {
-        "tag" : "WATH.MTPSVR2.STCW00040000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -827,7 +827,7 @@
         "interval" : "P1D"
       },
       "Tag38" : {
-        "tag" : "WATH.MTPSVR3.WSPW01CRTQRN.F_CV",
+        "tag" : "IGNW.Kitchener-WSP_PLC01-WSPW01CRTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -848,7 +848,7 @@
         "interval" : "P1D"
       },
       "Tag39" : {
-        "tag" : "WATH.MTPSVR2.WHPW00010000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -869,7 +869,7 @@
         "interval" : "P1D"
       },
       "Tag40" : {
-        "tag" : "WATH.MTPSVR2.WHPW00050000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -890,7 +890,7 @@
         "interval" : "P1D"
       },
       "Tag41" : {
-        "tag" : "WATH.MTPSVR2.WHPW00060000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0006_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -911,7 +911,7 @@
         "interval" : "P1D"
       },
       "Tag42" : {
-        "tag" : "WATH.MTPSVR3.PETW00010000QRN.F_CV",
+        "tag" : "IGNW.Rural-Wilmot-PET_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -950,7 +950,7 @@
     "regionNum" : 1,
     "dataParams" : {
       "Tag0" : {
-        "tag" : "WATH.MTPSVR2.ATPW00010000QRN.F_CV",
+        "tag" : "IGNW.ATP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -971,7 +971,7 @@
         "interval" : "P1D"
       },
       "Tag1" : {
-        "tag" : "WATH.MTPSVR2.ATPW00020000QRN.F_CV",
+        "tag" : "IGNW.ATP_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -992,7 +992,7 @@
         "interval" : "P1D"
       },
       "Tag2" : {
-        "tag" : "WATH.MTPSVR2.APSW00030000QRN.F_CV",
+        "tag" : "IGNW.APS_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1013,7 +1013,7 @@
         "interval" : "P1D"
       },
       "Tag3" : {
-        "tag" : "WATH.MTPSVR2.BMSW00020000QYR.F_CV",
+        "tag" : "IGNW.BMS_PLC01-W0002_0000-QYR",
         "isEnabled" : "true",
         "mode" : "esrYesterdayValue",
         "showUnits" : "false",
@@ -1034,7 +1034,7 @@
         "interval" : "P1D"
       },
       "Tag4" : {
-        "tag" : "WATH.MTPSVR2.BMSW00030000QRN.F_CV",
+        "tag" : "IGNW.BMS_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1055,7 +1055,7 @@
         "interval" : "P1D"
       },
       "Tag5" : {
-        "tag" : "WATH.MTPSVR3.FGSW00010000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1076,7 +1076,7 @@
         "interval" : "P1D"
       },
       "Tag6" : {
-        "tag" : "WATH.MTPSVR3.FGSW002A0000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W002A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1097,7 +1097,7 @@
         "interval" : "P1D"
       },
       "Tag7" : {
-        "tag" : "WATH.MTPSVR3.FGSW00040000QRN.F_CV",
+        "tag" : "IGNW.FGS_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1118,7 +1118,7 @@
         "interval" : "P1D"
       },
       "Tag8" : {
-        "tag" : "WATH.MTPSVR2.G16W00160000QRN.F_CV",
+        "tag" : "IGNW.Cambridge-Galt Wells-G16_PLC01-W0016_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1139,7 +1139,7 @@
         "interval" : "P1D"
       },
       "Tag9" : {
-        "tag" : "WATH.MTPSVR2.G18W00180000QRN.F_CV",
+        "tag" : "IGNW.Cambridge-Galt Wells-G18_PLC01-W0018_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1160,7 +1160,7 @@
         "interval" : "P1D"
       },
       "Tag10" : {
-        "tag" : "WATH.MTPSVR2.HEPHD01RTQRN.F_CV",
+        "tag" : "IGNW.Rural-Wellesley-HEP_PLC01-HEPHD01RTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1181,7 +1181,7 @@
         "interval" : "P1D"
       },
       "Tag11" : {
-        "tag" : "WATH.MTPSVR2.HEPHD02RTQRN.F_CV",
+        "tag" : "IGNW.Rural-Wellesley-HEP_PLC01-HEPHD02RTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1202,7 +1202,7 @@
         "interval" : "P1D"
       },
       "Tag12" : {
-        "tag" : "WATH.MTPSVR3.K4CW004C0000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K4C_PLC01-W004C_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1223,7 +1223,7 @@
         "interval" : "P1D"
       },
       "Tag13" : {
-        "tag" : "WATH.MTPSVR1.K21W00210000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K21_PLC01-W0021_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1244,7 +1244,7 @@
         "interval" : "P1D"
       },
       "Tag14" : {
-        "tag" : "WATH.MTPSVR1.K21W021A0000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K21_PLC01-W021A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1265,7 +1265,7 @@
         "interval" : "P1D"
       },
       "Tag15" : {
-        "tag" : "WATH.MTPSVR3.K23W00230000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K23_PLC01-W0023_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1286,7 +1286,7 @@
         "interval" : "P1D"
       },
       "Tag16" : {
-        "tag" : "WATH.MTPSVR1.K25W00250000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K25_PLC01-W0025_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1307,7 +1307,7 @@
         "interval" : "P1D"
       },
       "Tag17" : {
-        "tag" : "WATH.MTPSVR3.K26W00260000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K26_PLC01-W0026_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1328,7 +1328,7 @@
         "interval" : "P1D"
       },
       "Tag18" : {
-        "tag" : "WATH.MTPSVR1.K29W00290000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K29_PLC01-W0029_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1349,7 +1349,7 @@
         "interval" : "P1D"
       },
       "Tag19" : {
-        "tag" : "WATH.MTPSVR3.K50W00500000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K50_PLC01-W0050_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1370,7 +1370,7 @@
         "interval" : "P1D"
       },
       "Tag20" : {
-        "tag" : "WATH.MTPSVR3.K50W00510000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K50_PLC01-W0051_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1391,7 +1391,7 @@
         "interval" : "P1D"
       },
       "Tag21" : {
-        "tag" : "WATH.MTPSVR1.K91W00910000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K91_PLC01-W0091_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1412,7 +1412,7 @@
         "interval" : "P1D"
       },
       "Tag22" : {
-        "tag" : "WATH.MTPSVR1.K91W00920000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K91_PLC01-W0092_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1433,7 +1433,7 @@
         "interval" : "P1D"
       },
       "Tag23" : {
-        "tag" : "WATH.MTPSVR1.K93W00930000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K93_PLC01-W0093_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1454,7 +1454,7 @@
         "interval" : "P1D"
       },
       "Tag24" : {
-        "tag" : "WATH.MTPSVR1.K93W00940000QRN.F_CV",
+        "tag" : "IGNW.Kitchener-Wells-K93_PLC01-W0094_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1475,7 +1475,7 @@
         "interval" : "P1D"
       },
       "Tag43" : {
-        "tag" : "WATH.MTPSVR2.LINW001A0000QRN.F_CV",
+        "tag" : "IGNW.LIN_PLC01-W001A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1496,7 +1496,7 @@
         "interval" : "P1D"
       },
       "Tag26" : {
-        "tag" : "WATH.MTPSVR2.LINW00020000QRN.F_CV",
+        "tag" : "IGNW.LIN_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1517,7 +1517,7 @@
         "interval" : "P1D"
       },
       "Tag27" : {
-        "tag" : "WATH.MTPSVR2.MYPW00010000QRN.F_CV",
+        "tag" : "IGNW.Rural-Woolwich-MYP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1538,7 +1538,7 @@
         "interval" : "P1D"
       },
       "Tag28" : {
-        "tag" : "WATH.MTPSVR2.MYPW00020000QRN.F_CV",
+        "tag" : "IGNW.Rural-Woolwich-MYP_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1559,7 +1559,7 @@
         "interval" : "P1D"
       },
       "Tag29" : {
-        "tag" : "WATH.MTPSVR2.MVPW004A0000QRN.F_CV",
+        "tag" : "IGNW.MVP_PLC01-W004A_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1580,7 +1580,7 @@
         "interval" : "P1D"
       },
       "Tag30" : {
-        "tag" : "WATH.MTPSVR2.MVPW00050000QRN.F_CV",
+        "tag" : "IGNW.MVP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1601,7 +1601,7 @@
         "interval" : "P1D"
       },
       "Tag31" : {
-        "tag" : "WATH.MTPSVR3.NDPW00040000QRN.F_CV",
+        "tag" : "IGNW.NDP_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1622,7 +1622,7 @@
         "interval" : "P1D"
       },
       "Tag32" : {
-        "tag" : "WATH.MTPSVR3.NDPW00050000QRN.F_CV",
+        "tag" : "IGNW.NDP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1643,7 +1643,7 @@
         "interval" : "P1D"
       },
       "Tag33" : {
-        "tag" : "WATH.MTPSVR2.RTPW00050000QRN.F_CV",
+        "tag" : "IGNW.RTP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1664,7 +1664,7 @@
         "interval" : "P1D"
       },
       "Tag34" : {
-        "tag" : "WATH.MTPSVR2.RTPW00060000QRN.F_CV",
+        "tag" : "IGNW.RTP_PLC01-W0006_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1685,7 +1685,7 @@
         "interval" : "P1D"
       },
       "Tag35" : {
-        "tag" : "WATH.MTPSVR2.STCW00020000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0002_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1706,7 +1706,7 @@
         "interval" : "P1D"
       },
       "Tag36" : {
-        "tag" : "WATH.MTPSVR2.STCW00030000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0003_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1727,7 +1727,7 @@
         "interval" : "P1D"
       },
       "Tag37" : {
-        "tag" : "WATH.MTPSVR2.STCW00040000QRN.F_CV",
+        "tag" : "IGNW.STC_PLC01-W0004_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1748,7 +1748,7 @@
         "interval" : "P1D"
       },
       "Tag38" : {
-        "tag" : "WATH.MTPSVR3.WSPW01CRTQRN.F_CV",
+        "tag" : "IGNW.Kitchener-WSP_PLC01-WSPW01CRTQRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1769,7 +1769,7 @@
         "interval" : "P1D"
       },
       "Tag39" : {
-        "tag" : "WATH.MTPSVR2.WHPW00010000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1790,7 +1790,7 @@
         "interval" : "P1D"
       },
       "Tag40" : {
-        "tag" : "WATH.MTPSVR2.WHPW00050000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0005_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1811,7 +1811,7 @@
         "interval" : "P1D"
       },
       "Tag41" : {
-        "tag" : "WATH.MTPSVR2.WHPW00060000QRN.F_CV",
+        "tag" : "IGNW.WHP_PLC01-W0006_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -1832,7 +1832,7 @@
         "interval" : "P1D"
       },
       "Tag42" : {
-        "tag" : "WATH.MTPSVR3.PETW00010000QRN.F_CV",
+        "tag" : "IGNW.Rural-Wilmot-PET_PLC01-W0001_0000-QRN",
         "isEnabled" : "true",
         "mode" : "periodTotal",
         "showUnits" : "false",
@@ -2509,7 +2509,7 @@
                 </structure>
             </list-property>
             <property name="dataSource">eRIS DataSource</property>
-            <xml-property name="queryText"><![CDATA[/tag/oda?start={start}&amp;end={end}&amp;tags=Tag0:WATH.MTPSVR2.ATPW00010000QRN.F_CV:periodTotal:P1D,Tag1:WATH.MTPSVR2.ATPW00020000QRN.F_CV:periodTotal:P1D,Tag2:WATH.MTPSVR2.APSW00030000QRN.F_CV:periodTotal:P1D,Tag3:WATH.MTPSVR2.BMSW00020000QYR.F_CV:esrYesterdayValue:P1D,Tag4:WATH.MTPSVR2.BMSW00030000QRN.F_CV:periodTotal:P1D,Tag5:WATH.MTPSVR3.FGSW00010000QRN.F_CV:periodTotal:P1D,Tag6:WATH.MTPSVR3.FGSW002A0000QRN.F_CV:periodTotal:P1D,Tag7:WATH.MTPSVR3.FGSW00040000QRN.F_CV:periodTotal:P1D,Tag8:WATH.MTPSVR2.G16W00160000QRN.F_CV:periodTotal:P1D,Tag9:WATH.MTPSVR2.G18W00180000QRN.F_CV:periodTotal:P1D,Tag10:WATH.MTPSVR2.HEPHD01RTQRN.F_CV:periodTotal:P1D,Tag11:WATH.MTPSVR2.HEPHD02RTQRN.F_CV:periodTotal:P1D,Tag12:WATH.MTPSVR3.K4CW004C0000QRN.F_CV:periodTotal:P1D,Tag13:WATH.MTPSVR1.K21W00210000QRN.F_CV:periodTotal:P1D,Tag14:WATH.MTPSVR1.K21W021A0000QRN.F_CV:periodTotal:P1D,Tag15:WATH.MTPSVR3.K23W00230000QRN.F_CV:periodTotal:P1D,Tag16:WATH.MTPSVR1.K25W00250000QRN.F_CV:periodTotal:P1D,Tag17:WATH.MTPSVR3.K26W00260000QRN.F_CV:periodTotal:P1D,Tag18:WATH.MTPSVR1.K29W00290000QRN.F_CV:periodTotal:P1D,Tag19:WATH.MTPSVR3.K50W00500000QRN.F_CV:periodTotal:P1D,Tag20:WATH.MTPSVR3.K50W00510000QRN.F_CV:periodTotal:P1D,Tag21:WATH.MTPSVR1.K91W00910000QRN.F_CV:periodTotal:P1D,Tag22:WATH.MTPSVR1.K91W00920000QRN.F_CV:periodTotal:P1D,Tag23:WATH.MTPSVR1.K93W00930000QRN.F_CV:periodTotal:P1D,Tag24:WATH.MTPSVR1.K93W00940000QRN.F_CV:periodTotal:P1D,Tag43:WATH.MTPSVR2.LINW001A0000QRN.F_CV:periodTotal:P1D,Tag26:WATH.MTPSVR2.LINW00020000QRN.F_CV:periodTotal:P1D,Tag27:WATH.MTPSVR2.MYPW00010000QRN.F_CV:periodTotal:P1D,Tag28:WATH.MTPSVR2.MYPW00020000QRN.F_CV:periodTotal:P1D,Tag29:WATH.MTPSVR2.MVPW004A0000QRN.F_CV:periodTotal:P1D,Tag30:WATH.MTPSVR2.MVPW00050000QRN.F_CV:periodTotal:P1D,Tag31:WATH.MTPSVR3.NDPW00040000QRN.F_CV:periodTotal:P1D,Tag32:WATH.MTPSVR3.NDPW00050000QRN.F_CV:periodTotal:P1D,Tag33:WATH.MTPSVR2.RTPW00050000QRN.F_CV:periodTotal:P1D,Tag34:WATH.MTPSVR2.RTPW00060000QRN.F_CV:periodTotal:P1D,Tag35:WATH.MTPSVR2.STCW00020000QRN.F_CV:periodTotal:P1D,Tag36:WATH.MTPSVR2.STCW00030000QRN.F_CV:periodTotal:P1D,Tag37:WATH.MTPSVR2.STCW00040000QRN.F_CV:periodTotal:P1D,Tag38:WATH.MTPSVR3.WSPW01CRTQRN.F_CV:periodTotal:P1D,Tag39:WATH.MTPSVR2.WHPW00010000QRN.F_CV:periodTotal:P1D,Tag40:WATH.MTPSVR2.WHPW00050000QRN.F_CV:periodTotal:P1D,Tag41:WATH.MTPSVR2.WHPW00060000QRN.F_CV:periodTotal:P1D,Tag42:WATH.MTPSVR3.PETW00010000QRN.F_CV:periodTotal:P1D&amp;options=asc]]></xml-property>
+            <xml-property name="queryText"><![CDATA[/tag/oda?start={start}&amp;end={end}&amp;tags=Tag0:IGNW.ATP_PLC01-W0001_0000-QRN:periodTotal:P1D,Tag1:IGNW.ATP_PLC01-W0002_0000-QRN:periodTotal:P1D,Tag2:IGNW.APS_PLC01-W0003_0000-QRN:periodTotal:P1D,Tag3:IGNW.BMS_PLC01-W0002_0000-QYR:esrYesterdayValue:P1D,Tag4:IGNW.BMS_PLC01-W0003_0000-QRN:periodTotal:P1D,Tag5:IGNW.FGS_PLC01-W0001_0000-QRN:periodTotal:P1D,Tag6:IGNW.FGS_PLC01-W002A_0000-QRN:periodTotal:P1D,Tag7:IGNW.FGS_PLC01-W0004_0000-QRN:periodTotal:P1D,Tag8:IGNW.Cambridge-Galt Wells-G16_PLC01-W0016_0000-QRN:periodTotal:P1D,Tag9:IGNW.Cambridge-Galt Wells-G18_PLC01-W0018_0000-QRN:periodTotal:P1D,Tag10:IGNW.Rural-Wellesley-HEP_PLC01-HEPHD01RTQRN:periodTotal:P1D,Tag11:IGNW.Rural-Wellesley-HEP_PLC01-HEPHD02RTQRN:periodTotal:P1D,Tag12:IGNW.Kitchener-Wells-K4C_PLC01-W004C_0000-QRN:periodTotal:P1D,Tag13:IGNW.Kitchener-Wells-K21_PLC01-W0021_0000-QRN:periodTotal:P1D,Tag14:IGNW.Kitchener-Wells-K21_PLC01-W021A_0000-QRN:periodTotal:P1D,Tag15:IGNW.Kitchener-Wells-K23_PLC01-W0023_0000-QRN:periodTotal:P1D,Tag16:IGNW.Kitchener-Wells-K25_PLC01-W0025_0000-QRN:periodTotal:P1D,Tag17:IGNW.Kitchener-Wells-K26_PLC01-W0026_0000-QRN:periodTotal:P1D,Tag18:IGNW.Kitchener-Wells-K29_PLC01-W0029_0000-QRN:periodTotal:P1D,Tag19:IGNW.Kitchener-Wells-K50_PLC01-W0050_0000-QRN:periodTotal:P1D,Tag20:IGNW.Kitchener-Wells-K50_PLC01-W0051_0000-QRN:periodTotal:P1D,Tag21:IGNW.Kitchener-Wells-K91_PLC01-W0091_0000-QRN:periodTotal:P1D,Tag22:IGNW.Kitchener-Wells-K91_PLC01-W0092_0000-QRN:periodTotal:P1D,Tag23:IGNW.Kitchener-Wells-K93_PLC01-W0093_0000-QRN:periodTotal:P1D,Tag24:IGNW.Kitchener-Wells-K93_PLC01-W0094_0000-QRN:periodTotal:P1D,Tag43:IGNW.LIN_PLC01-W001A_0000-QRN:periodTotal:P1D,Tag26:IGNW.LIN_PLC01-W0002_0000-QRN:periodTotal:P1D,Tag27:IGNW.Rural-Woolwich-MYP_PLC01-W0001_0000-QRN:periodTotal:P1D,Tag28:IGNW.Rural-Woolwich-MYP_PLC01-W0002_0000-QRN:periodTotal:P1D,Tag29:IGNW.MVP_PLC01-W004A_0000-QRN:periodTotal:P1D,Tag30:IGNW.MVP_PLC01-W0005_0000-QRN:periodTotal:P1D,Tag31:IGNW.NDP_PLC01-W0004_0000-QRN:periodTotal:P1D,Tag32:IGNW.NDP_PLC01-W0005_0000-QRN:periodTotal:P1D,Tag33:IGNW.RTP_PLC01-W0005_0000-QRN:periodTotal:P1D,Tag34:IGNW.RTP_PLC01-W0006_0000-QRN:periodTotal:P1D,Tag35:IGNW.STC_PLC01-W0002_0000-QRN:periodTotal:P1D,Tag36:IGNW.STC_PLC01-W0003_0000-QRN:periodTotal:P1D,Tag37:IGNW.STC_PLC01-W0004_0000-QRN:periodTotal:P1D,Tag38:IGNW.Kitchener-WSP_PLC01-WSPW01CRTQRN:periodTotal:P1D,Tag39:IGNW.WHP_PLC01-W0001_0000-QRN:periodTotal:P1D,Tag40:IGNW.WHP_PLC01-W0005_0000-QRN:periodTotal:P1D,Tag41:IGNW.WHP_PLC01-W0006_0000-QRN:periodTotal:P1D,Tag42:IGNW.Rural-Wilmot-PET_PLC01-W0001_0000-QRN:periodTotal:P1D&amp;options=asc]]></xml-property>
         </oda-data-set>
     </data-sets>
     <styles>

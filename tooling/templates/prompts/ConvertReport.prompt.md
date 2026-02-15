@@ -11,6 +11,12 @@ Follow these instructions when converting BIRT reports from iFIX to Ignition:
 **IMPORTANT:** Before starting, review the `Required Tools and Approaches` section below to understand which specific tools and methods must be used for each step.
 
 1. Accept one or more .rptdesign file paths from the `eris\input\reports` directory
+   - **If the user does not provide a specific report name or there is any uncertainty about which report to convert:**
+     - Use `list_dir` tool to list all .rptdesign files in the `eris\input\reports` directory
+     - Present the list of available reports to the user
+     - Use the `ask_questions` tool to ask the user to select which report(s) to convert
+     - Provide the list of report filenames as selectable options
+     - Only proceed with the selected report(s)
 2. Validate each file as valid XML
    - Reference the `Required Tools and Approaches` section for specific validation tools
    - Reference the `XML Validation` section below for more details
@@ -52,9 +58,14 @@ To ensure consistent execution across conversion runs:
 
 ### iFIX Tag Extraction
 - Use Python's `re` module
-- Pattern: `r'WATH\.[\w\.]+:'` (matches WATH. prefix, word/dot characters, trailing colon)
-- Use `re.findall()` on full file content
-- Process results to remove `WATH.` prefix and trailing `:` for lookup matching
+- **CRITICAL:** Check BOTH tag formats - tags may appear in JSON format OR XML queryText URLs:
+  - **JSON format pattern:** `r'"tag"\s*:\s*"(WATH\.[A-Z0-9_.]+)"'` (captures WATH tag within JSON property value)
+  - **XML queryText URL pattern:** `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'` (captures WATH tag within URL query parameters)
+- Use `re.findall()` on full file content with BOTH patterns
+- Combine results from both patterns (use set union to avoid duplicates when counting unique tags)
+- **CRITICAL:** Count TOTAL instances (sum of both pattern matches) - this is your baseline for verification
+- Store both unique tags and total instance count
+- Process results to remove `WATH.` prefix for lookup matching
 
 ### CSV Lookup Processing
 - Use Python's `csv.DictReader`
@@ -69,11 +80,23 @@ To ensure consistent execution across conversion runs:
   - Verify replacement counts match expected instances
 
 ### Conversion Verification
-- **Verify iFIX tag removal:** Use pattern `r'WATH\.[^:]+:'` to count remaining WATH tags (should be 0)
-- **Verify Ignition tag presence:** Use pattern `r'IGNW\.[^:]+:'` to count IGNW tags (should equal total instances)
-- **CRITICAL:** Use `[^:]+` (match any character except colon) instead of `[\w\-\.]+` to avoid undercounting
-- The broad pattern ensures all valid tag characters are captured, including underscores, dots, and dashes
-- Compare IGNW count against expected total instances from extraction phase
+- **Verify iFIX tag removal:** Check BOTH formats using extraction patterns:
+  - JSON format: `r'"tag"\s*:\s*"WATH\.[A-Z0-9_.]+"'`
+  - XML queryText: `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'`
+  - Sum of both pattern matches must equal 0
+- **Verify Ignition tag presence:** Check BOTH formats:
+  - JSON format: `r'"tag"\s*:\s*"IGNW\.[^"]+"'`
+  - XML queryText: `r'Tag[0-9.]+:(IGNW\.[^:]+):'`
+  - Sum of both pattern matches must equal total instances from extraction
+- **CRITICAL PATTERN DIFFERENCE:**
+  - JSON patterns match within `"tag"` property values
+  - XML patterns match within URL query parameters `Tag[number]:[tagpath]:`
+  - WATH uses uppercase alphanumeric pattern `[A-Z0-9_.]` to match the actual tag format
+  - IGNW uses broad pattern `[^"]` or `[^:]` because transformed paths can contain dashes, etc.
+- **CRITICAL VALIDATION:** Total IGNW count MUST EXACTLY EQUAL the total WATH instance count from extraction
+  - If 30 unique tags with 90 total instances were found, verify exactly 90 IGNW tags exist after conversion
+  - If counts don't match, conversion is incomplete - investigate and report detailed error
+- Compare IGNW count against the pre-conversion total instance count (not unique count)
 
 ## XML Validation
 
@@ -85,19 +108,28 @@ Before processing any report file:
 
 ## iFIX Tag Path Extraction
 
-Search the entire XML document for iFIX tag paths:
+Search the entire XML document for iFIX tag paths in ALL possible formats:
 
-- iFIX tag paths are identified by the prefix `WATH.` and end with a colon `:`
-- Pattern to search: `WATH.*:`
-- These tags are typically found within `<queryText>` XML elements, but **search the entire XML file**
-- Extract all unique iFIX tag paths found in each report
-- For each tag, remove the `WATH.` prefix to get the base tag name for lookup
-- Remove the trailing colon `:` as well
+- iFIX tag paths are identified by the prefix `WATH.` and appear in TWO possible formats:
+  1. **JSON format:** Within JSON `"tag"` properties (e.g., `"tag" : "WATH.MTPSVR1.TAG"`) 
+  2. **XML queryText URL format:** Within URL query parameters (e.g., `Tag1.0:WATH.MTPSVR1.TAG:esrMaxGap`)
+- **Extraction patterns - MUST use BOTH:**
+  - JSON pattern: `r'"tag"\s*:\s*"(WATH\.[A-Z0-9_.]+)"'` (captures WATH tag within JSON property value)
+  - XML queryText pattern: `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'` (captures WATH tag within URL query parameters)
+- **Search the entire XML file** with both patterns - tags may appear in either or both formats
+- **CRITICAL COUNTING REQUIREMENTS:**
+  - Extract matches from BOTH patterns
+  - Count TOTAL instances (sum of all occurrences from both patterns): This is your baseline - if you find 90 total instances, you must convert ALL 90
+  - Count UNIQUE tags: Combine results from both patterns, remove duplicates
+  - Store both counts separately - they serve different purposes
+- For each unique tag, remove the `WATH.` prefix to get the base tag name for lookup
 - Present a summary showing:
   - Report file name
-  - Total count of iFIX tag instances found
-  - List of unique iFIX tags (without WATH. prefix and trailing colon)
-- **CRITICAL:** If no instances of iFIX tags are found in a report, report this to the user and skip conversion. Create a summary file indicating zero tags found and conversion skipped for that report.
+  - **Total count of iFIX tag instances found** (e.g., "90 total instances from JSON + queryText")
+  - **Count of unique iFIX tags** (e.g., "30 unique tags")
+  - List of unique iFIX tags (without WATH. prefix)
+  - Per-tag instance counts (e.g., "WATH.TAG1 appears 5 times (3 in JSON, 2 in queryText)")
+- **CRITICAL:** If no instances of iFIX tags are found in a report using EITHER pattern, report this to the user and skip conversion. Create a summary file indicating zero tags found and conversion skipped for that report.
 
 ## Tag Lookup Matching
 
@@ -148,7 +180,7 @@ When iFIX tags cannot be found in the lookup table, create a mismatch summary fi
    
    | iFIX Tag (without WATH. prefix) | Full Tag Path in Report | Instances Found |
    |--------------------------------|------------------------|----------------|
-   | [tag_name] | WATH.[tag_name]: | [count] |
+   | [tag_name] | WATH.[tag_name] | [count] |
    
    ## Tags Successfully Matched
    
@@ -156,7 +188,7 @@ When iFIX tags cannot be found in the lookup table, create a mismatch summary fi
    
    | iFIX Tag Path | Ignition Tag Name (Lookup) | Instances Found |
    |---------------|----------------------------|----------------|
-   | WATH.[tag]: | [ign_tagname] | [count] |
+   | WATH.[tag] | [ign_tagname] | [count] |
    
    ## Required Action
    
@@ -214,19 +246,53 @@ When user confirms conversion, process each report file:
      - Replace all forward slash characters `/` with dashes `-`
    - Example: If `ign_tagname` is `Plant/Pumps/P101/FlowRate`, transform to `IGNW.Plant-Pumps-P101-FlowRate`
 
-3. **Replace tag paths in XML:**
-   - In the output copy, find all instances of the original iFIX tag path (including WATH. prefix and trailing colon)
-   - Replace with the transformed Ignition tag path (including IGNW. prefix and trailing colon)
-   - Example: Replace `WATH.P101_FLOW:` with `IGNW.Plant-Pumps-P101-FlowRate:`
-   - Ensure all instances are replaced throughout the entire XML document
+3. **Pre-conversion instance count:**
+   - Before making ANY changes, count total instances of each iFIX tag path in the original file
+   - Store these counts for post-conversion verification
+   - This ensures you know EXACTLY how many replacements should occur
 
-4. **Verify replacement:**
+4. **Replace tag paths in XML:**
+   - In the output copy, find all instances of the original iFIX tag path in BOTH formats:
+     - **JSON format:** Within `"tag"` property values (e.g., `"tag" : "WATH.MTPSVR2.P101_FLOW"`)
+     - **XML queryText format:** Within URL query parameters (e.g., `Tag1.0:WATH.MTPSVR2.P101_FLOW:esrMaxGap`)
+   - Replace `WATH.[tag_path]` with the transformed Ignition tag path `IGNW.[transformed_path]` in ALL occurrences
+   - Examples:
+     - JSON: Replace `"tag" : "WATH.MTPSVR2.P101_FLOW"` with `"tag" : "IGNW.Plant-Pumps-P101-FlowRate"`
+     - queryText: Replace `Tag1.0:WATH.MTPSVR2.P101_FLOW:esrMaxGap` with `Tag1.0:IGNW.Plant-Pumps-P101-FlowRate:esrMaxGap`
+   - Ensure all instances are replaced throughout the entire XML document
+   - Use Python's `str.replace()` method which replaces ALL occurrences regardless of context (works for both formats)
+
+5. **Verify replacement:**
    - Reference the `Conversion Verification` subsection in `Required Tools and Approaches` for proper validation methods
-   - Count remaining WATH tags using pattern `r'WATH\.[^:]+:'` - must equal 0
-   - Count IGNW tags using pattern `r'IGNW\.[^:]+:'` - must equal total instances from extraction
-   - **CRITICAL:** Do not use restrictive patterns like `[\w\-]` that may miss valid characters
-   - Report verification results showing: WATH remaining (expected: 0), IGNW found (expected: total instances)
-   - If counts don't match expectations, investigate and report detailed warning to user
+   - Count remaining WATH tags using BOTH extraction patterns - sum must equal 0:
+     - JSON pattern: `r'"tag"\s*:\s*"WATH\.[A-Z0-9_.]+"'`
+     - queryText pattern: `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'`
+   - Count IGNW tags using BOTH corresponding patterns - sum must equal total instances from extraction:
+     - JSON pattern: `r'"tag"\s*:\s*"IGNW\.[^"]+"'`
+     - queryText pattern: `r'Tag[0-9.]+:(IGNW\.[^:]+):'`
+   - **CRITICAL VALIDATION:**
+     - If extraction found 30 unique tags with 90 total instances (from both formats combined), post-conversion MUST show:
+       - WATH remaining: 0 (sum of both patterns)
+       - IGNW found: 90 (sum of both patterns, matching total instances)
+     - Any deviation indicates incomplete conversion - FAIL the conversion and report error
+   - Report verification results showing: WATH remaining (expected: 0), IGNW found (expected: [total instances])
+   - If counts don't match expectations exactly, report detailed error and ask user to investigate
+
+6. **CRITICAL SANITY CHECK - WATH. Text Verification:**
+   - **THIS CHECK IS MANDATORY AND MUST NOT BE SKIPPED**
+   - After all replacements are complete, perform a final sanity check on the converted file
+   - Search the ENTIRE converted file for ANY occurrence of the text "WATH." (case-sensitive)
+   - Use Python's `in` operator or simple string search: `'WATH.' in file_content`
+   - **CRITICAL REQUIREMENT:**
+     - If "WATH." is found ANYWHERE in the converted file, the conversion has FAILED
+     - Report exact count of "WATH." occurrences found
+     - Report the first few lines containing "WATH." for debugging
+     - STOP processing immediately and inform user that manual investigation is required
+     - DO NOT generate conversion summary or mark conversion as successful
+   - **SUCCESS CRITERIA:**
+     - The text "WATH." MUST NOT appear anywhere in the converted file
+     - Only if this check passes can the conversion be considered complete
+   - Report result: "WATH. sanity check: PASSED" or "WATH. sanity check: FAILED - [count] occurrences found"
 
 ## Summary Generation
 
@@ -258,7 +324,7 @@ After completing conversion for each report file:
    
    | iFIX Tag Path | Ignition Tag Name (Lookup) | Formatted Ignition Tag Path | Instances Replaced |
    |---------------|----------------------------|----------------------------|-------------------|
-   | WATH.[tag]: | [ign_tagname] | IGNW.[formatted]: | [count] |
+   | WATH.[tag] | [ign_tagname] | IGNW.[formatted] | [count] |
    
    ## Conversion Details
    
@@ -267,11 +333,16 @@ After completing conversion for each report file:
    **Verification:**
    - WATH tags remaining in output file: [count, should be 0]
    - IGNW tags in output file: [count, should match total instances]
+   - WATH. sanity check: ✓ PASSED (no occurrences found)
    - Conversion status: ✓ Complete
    
    **Tag Format Transformation:**
-   - iFIX format: `WATH.[server].[tag_path]:` 
-   - Ignition format: `IGNW.[formatted_path]:` (forward slashes replaced with dashes)
+   - iFIX formats: 
+     - JSON: `"tag" : "WATH.[server].[tag_path]"` 
+     - XML queryText: `Tag[number]:WATH.[server].[tag_path]:[parameters]`
+   - Ignition formats:
+     - JSON: `"tag" : "IGNW.[formatted_path]"` (forward slashes replaced with dashes)
+     - XML queryText: `Tag[number]:IGNW.[formatted_path]:[parameters]` (forward slashes replaced with dashes)
    
    All tag paths were successfully validated against the lookup table and converted according to the specified transformation rules.
    ```

@@ -4,7 +4,7 @@
   "info" : "eRISReportBuilder",
   "name" : "Consumption - Index for IUS Kit",
   "description" : "Consumption - Index for IUS  Kit (m3)",
-  "lastModified" : "2025-05-15T08:57:11.731",
+  "lastModified" : "2026-02-19T14:35:50.489",
   "layout" : {
     "regions" : [ {
       "regionNum" : 1,
@@ -21,7 +21,7 @@
   },
   "templatePath" : null,
   "dataSets" : [ {
-    "id" : "ReportBuilderDataSet:1768a278-3568-4999-92ea-c0069fe6cdc1",
+    "id" : "ReportBuilderDataSet:528caafb-31c6-4b1f-9758-a83181d11b3c",
     "name" : null,
     "type" : "TAG",
     "showValuesAsStrings" : false,
@@ -478,27 +478,6 @@
         "unitConversion" : "",
         "label" : "Baden VC Baden Lines Combined Flow Continuous Total",
         "showMode" : "true",
-        "decimalPlaces" : "default",
-        "colWidth" : "",
-        "textAlign" : "Right",
-        "color" : "",
-        "axis" : "",
-        "seriesType" : "",
-        "showSummary" : "true",
-        "summarizeData" : "false",
-        "summaryMode" : "average",
-        "summaryInterval" : "P1D",
-        "interval" : "P1D"
-      },
-      "Tag22" : {
-        "tag" : "WATH.MTPSVR3.K50VCH01FI03QFL.F_CV",
-        "isEnabled" : "false",
-        "mode" : "periodTotal",
-        "showUnits" : "false",
-        "units" : "m³",
-        "unitConversion" : "",
-        "label" : "K50S Flow to Baden Tank Continuous Total",
-        "showMode" : "false",
         "decimalPlaces" : "default",
         "colWidth" : "",
         "textAlign" : "Right",
@@ -1117,27 +1096,6 @@
         "summaryInterval" : "P1D",
         "interval" : "P1D"
       },
-      "Tag22" : {
-        "tag" : "WATH.MTPSVR3.K50VCH01FI03QFL.F_CV",
-        "isEnabled" : "false",
-        "mode" : "periodTotal",
-        "showUnits" : "false",
-        "units" : "m³",
-        "unitConversion" : "",
-        "label" : "K50S Flow to Baden Tank Continuous Total",
-        "showMode" : "false",
-        "decimalPlaces" : "default",
-        "colWidth" : "",
-        "textAlign" : "Right",
-        "color" : "",
-        "axis" : "",
-        "seriesType" : "",
-        "showSummary" : "true",
-        "summarizeData" : "false",
-        "summaryMode" : "average",
-        "summaryInterval" : "P1D",
-        "interval" : "P1D"
-      },
       "Tag23" : {
         "tag" : "WATH.MTPSVR3.BLMVCH01FI01QFL.F_CV",
         "isEnabled" : "true",
@@ -1266,7 +1224,7 @@
       }
     },
     "name" : null,
-    "dataSetRef" : "ReportBuilderDataSet:1768a278-3568-4999-92ea-c0069fe6cdc1",
+    "dataSetRef" : "ReportBuilderDataSet:528caafb-31c6-4b1f-9758-a83181d11b3c",
     "dataSetTagsEnabled" : { },
     "elementParams" : {
       "tableType" : {
@@ -1883,7 +1841,7 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="com.eramosa.birt.oda.eris.dataset" name="ReportBuilderDataSet:1768a278-3568-4999-92ea-c0069fe6cdc1" id="5">
+        <oda-data-set extensionID="com.eramosa.birt.oda.eris.dataset" name="ReportBuilderDataSet:528caafb-31c6-4b1f-9758-a83181d11b3c" id="5">
             <list-property name="parameters">
                 <structure>
                     <property name="name">start</property>
@@ -1913,7 +1871,7 @@
                 </structure>
             </list-property>
             <property name="dataSource">eRIS DataSource</property>
-            <xml-property name="queryText"><![CDATA[/tag/oda?start={start}&amp;end={end}&amp;tags=Tag0:WATH.MTPSVR1.K21W000XFI01QFL.F_CV:periodTotal:P1D,Tag1:WATH.MTPSVR1.K25TWL01FI01QFL.F_CV:periodTotal:P1D,Tag2:WATH.MTPSVR1.K29TWL01FI01QFL.F_CV:periodTotal:P1D,Tag3:WATH.MTPSVR3.K23TWL01FI01QFL.F_CV:periodTotal:P1D,Tag4:WATH.MTPSVR3.K24TWL01FI01QFL.F_CV:periodTotal:P1D,Tag5:WATH.MTPSVR3.K26W0026FI01QFL.F_CV:periodTotal:P1D,Tag6:WATH.MTPSVR3.K50W0050FI01QFL.F_CV:periodTotal:P1D,Tag7:WATH.MTPSVR3.K50W0051FI01QFL.F_CV:periodTotal:P1D,Tag8:WATH.MTPSVR1.K91W0091FI01QFL.F_CV:periodTotal:P1D,Tag9:WATH.MTPSVR1.K91W0092FI01QFL.F_CV:periodTotal:P1D,Tag10:WATH.MTPSVR1.K93W0093FI01QFL.F_CV:periodTotal:P1D,Tag11:WATH.MTPSVR1.K93W0094FI01QFL.F_CV:periodTotal:P1D,Tag12:WATH.MTPSVR3.GBPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag13:WATH.MTPSVR3.MGMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag14:WATH.MTPSVR3.SSPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag15:WATH.MTPSVR1.MTPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag16:WATH.MTPSVR3.PKPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag17:WATH.MTPSVR3.K34TWL01FI01QFL.F_CV:periodTotal:P1D,Tag18:WATH.MTPSVR3.WBVVCH01FI02QFL.F_CV:periodTotal:P1D,Tag19:WATH.MTPSVR3.MV2VCH02FI01QFL.F_CV:periodTotal:P1D,Tag20:WATH.MTPSVR3.MV3VCH03FI01QFL.F_CV:periodTotal:P1D,Tag21:WATH.MTPSVR3.K50VCH01FI0XQFL.F_CV:periodTotal:P1D,Tag22:WATH.MTPSVR3.K50VCH01FI03QFL.F_CV:periodTotal:P1D,Tag23:WATH.MTPSVR3.BLMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag24:WATH.MTPSVR3.VIMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag25:WATH.MTPSVR3.Z6TETK01FI03QFL.F_CV:periodTotal:P1D,Tag26:WATH.MTPSVR3.FPMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag27:WATH.MTPSVR3.DRVVCH01FI01QFL.F_CV:periodTotal:P1D,Tag28:WATH.MTPSVR3.WBVVCH01FI01QFL.F_CV:periodTotal:P1D&amp;options=asc]]></xml-property>
+            <xml-property name="queryText"><![CDATA[/tag/oda?start={start}&amp;end={end}&amp;tags=Tag0:WATH.MTPSVR1.K21W000XFI01QFL.F_CV:periodTotal:P1D,Tag1:WATH.MTPSVR1.K25TWL01FI01QFL.F_CV:periodTotal:P1D,Tag2:WATH.MTPSVR1.K29TWL01FI01QFL.F_CV:periodTotal:P1D,Tag3:WATH.MTPSVR3.K23TWL01FI01QFL.F_CV:periodTotal:P1D,Tag4:WATH.MTPSVR3.K24TWL01FI01QFL.F_CV:periodTotal:P1D,Tag5:WATH.MTPSVR3.K26W0026FI01QFL.F_CV:periodTotal:P1D,Tag6:WATH.MTPSVR3.K50W0050FI01QFL.F_CV:periodTotal:P1D,Tag7:WATH.MTPSVR3.K50W0051FI01QFL.F_CV:periodTotal:P1D,Tag8:WATH.MTPSVR1.K91W0091FI01QFL.F_CV:periodTotal:P1D,Tag9:WATH.MTPSVR1.K91W0092FI01QFL.F_CV:periodTotal:P1D,Tag10:WATH.MTPSVR1.K93W0093FI01QFL.F_CV:periodTotal:P1D,Tag11:WATH.MTPSVR1.K93W0094FI01QFL.F_CV:periodTotal:P1D,Tag12:WATH.MTPSVR3.GBPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag13:WATH.MTPSVR3.MGMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag14:WATH.MTPSVR3.SSPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag15:WATH.MTPSVR1.MTPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag16:WATH.MTPSVR3.PKPTWL01FI01QFL.F_CV:periodTotal:P1D,Tag17:WATH.MTPSVR3.K34TWL01FI01QFL.F_CV:periodTotal:P1D,Tag18:WATH.MTPSVR3.WBVVCH01FI02QFL.F_CV:periodTotal:P1D,Tag19:WATH.MTPSVR3.MV2VCH02FI01QFL.F_CV:periodTotal:P1D,Tag20:WATH.MTPSVR3.MV3VCH03FI01QFL.F_CV:periodTotal:P1D,Tag21:WATH.MTPSVR3.K50VCH01FI0XQFL.F_CV:periodTotal:P1D,Tag23:WATH.MTPSVR3.BLMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag24:WATH.MTPSVR3.VIMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag25:WATH.MTPSVR3.Z6TETK01FI03QFL.F_CV:periodTotal:P1D,Tag26:WATH.MTPSVR3.FPMVCH01FI01QFL.F_CV:periodTotal:P1D,Tag27:WATH.MTPSVR3.DRVVCH01FI01QFL.F_CV:periodTotal:P1D,Tag28:WATH.MTPSVR3.WBVVCH01FI01QFL.F_CV:periodTotal:P1D&amp;options=asc]]></xml-property>
         </oda-data-set>
     </data-sets>
     <styles>
@@ -2027,7 +1985,7 @@
                         <property name="pageBreakAfter">avoid</property>
                         <property name="pageBreakBefore">avoid</property>
                         <property name="pageBreakInside">avoid</property>
-                        <property name="dataSet">ReportBuilderDataSet:1768a278-3568-4999-92ea-c0069fe6cdc1</property>
+                        <property name="dataSet">ReportBuilderDataSet:528caafb-31c6-4b1f-9758-a83181d11b3c</property>
                         <list-property name="boundDataColumns">
                             <structure>
                                 <property name="name">Time</property>
@@ -2913,46 +2871,6 @@
                             <structure>
                                 <property name="name">Tag21:units</property>
                                 <expression name="expression">dataSetRow["Tag21:units"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22</property>
-                                <expression name="expression">dataSetRow["Tag22"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:initial</property>
-                                <expression name="expression">dataSetRow["Tag22:initial"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:quality</property>
-                                <expression name="expression">dataSetRow["Tag22:quality"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:limit</property>
-                                <expression name="expression">dataSetRow["Tag22:limit"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:gap</property>
-                                <expression name="expression">dataSetRow["Tag22:gap"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:colour</property>
-                                <expression name="expression">dataSetRow["Tag22:colour"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:annotations</property>
-                                <expression name="expression">dataSetRow["Tag22:annotations"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:source</property>
-                                <expression name="expression">dataSetRow["Tag22:source"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:descriptors</property>
-                                <expression name="expression">dataSetRow["Tag22:descriptors"]</expression>
-                            </structure>
-                            <structure>
-                                <property name="name">Tag22:units</property>
-                                <expression name="expression">dataSetRow["Tag22:units"]</expression>
                             </structure>
                             <structure>
                                 <property name="name">Tag23</property>

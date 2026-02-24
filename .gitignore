@@ -1,0 +1,19 @@
+# Temporary working files
+.venv/
+__pycache__/
+*.pyc
+.VSCode/
+
+# Conversion workflow temporary/diagnostic files
+# These are generated during report processing and don't need version control
+tag_extraction_results*.json
+conversion_data*.json
+matching_results*.json
+partial_conversion_data.json
+partial_conversion_log.json
+.extraction_data.json
+.mismatch_data.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db

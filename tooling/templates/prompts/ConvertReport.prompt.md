@@ -92,7 +92,7 @@ To ensure consistent execution across conversion runs:
   - JSON patterns match within `"tag"` property values
   - XML patterns match within URL query parameters `Tag[number]:[tagpath]:`
   - WATH uses uppercase alphanumeric pattern `[A-Z0-9_.]` to match the actual tag format
-  - IGNW uses broad pattern `[^"]` or `[^:]` because transformed paths can contain dashes, etc.
+  - IGNW uses broad pattern `[^"]` or `[^:]` because transformed paths are lowercase with dashes, etc.
 - **CRITICAL VALIDATION:** Total IGNW count MUST EXACTLY EQUAL the total WATH instance count from extraction
   - If 30 unique tags with 90 total instances were found, verify exactly 90 IGNW tags exist after conversion
   - If counts don't match, conversion is incomplete - investigate and report detailed error
@@ -113,9 +113,14 @@ Search the entire XML document for iFIX tag paths in ALL possible formats:
 - iFIX tag paths are identified by the prefix `WATH.` and appear in TWO possible formats:
   1. **JSON format:** Within JSON `"tag"` properties (e.g., `"tag" : "WATH.MTPSVR1.TAG"`) 
   2. **XML queryText URL format:** Within URL query parameters (e.g., `Tag1.0:WATH.MTPSVR1.TAG:esrMaxGap`)
+- **IMPORTANT - Exclude calculated/derived tags:**
+  - Calculated tags have prefixes before WATH (e.g., `ET.WATH.`, `MDPH.WATH.`, etc.)
+  - These represent system-generated or derived values and should NOT be extracted or converted
+  - Only extract pure `WATH.` data tags (those starting with WATH. directly, with no prefix)
+  - Use negative lookbehind in patterns to exclude prefixed tags
 - **Extraction patterns - MUST use BOTH:**
-  - JSON pattern: `r'"tag"\s*:\s*"(WATH\.[A-Z0-9_.]+)"'` (captures WATH tag within JSON property value)
-  - XML queryText pattern: `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'` (captures WATH tag within URL query parameters)
+  - JSON pattern: `r'"tag"\s*:\s*"(WATH\.[A-Z0-9_.]+)"'` (captures WATH tag within JSON property value - will not match if preceded by other text)
+  - XML queryText pattern: `r'Tag[0-9.]+:(WATH\.[A-Z0-9_.]+):'` (captures WATH tag within URL query parameters - by design, only matches tags directly after colon, excluding prefixed variants like ET.WATH.)
 - **Search the entire XML file** with both patterns - tags may appear in either or both formats
 - **CRITICAL COUNTING REQUIREMENTS:**
   - Extract matches from BOTH patterns
@@ -129,11 +134,12 @@ Search the entire XML document for iFIX tag paths in ALL possible formats:
   - **Count of unique iFIX tags** (e.g., "30 unique tags")
   - List of unique iFIX tags (without WATH. prefix)
   - Per-tag instance counts (e.g., "WATH.TAG1 appears 5 times (3 in JSON, 2 in queryText)")
-- **CRITICAL:** If no instances of iFIX tags are found in a report using EITHER pattern, report this to the user and skip conversion. Create a summary file indicating zero tags found and conversion skipped for that report.
+- **CRITICAL:** If no instances of data iFIX tags (pure WATH. format) are found in a report using EITHER pattern, report this to the user and skip conversion. Create a summary file indicating zero tags found and conversion skipped for that report.
+- **Note on calculated tags:** If only prefixed tags like ET.WATH. are found with no matching data tags, this is normal and the report should be skipped (no conversion needed). Inform the user if this is the case.
 
 ## Tag Lookup Matching
 
-Use the CSV lookup file located at `src\ifix_to_ign_010152026.csv`:
+Use the CSV lookup file located at `src\ifix_to_ign_2026_02_19.csv`:
 
 - The CSV has the following columns: `hist_tagname`, `ign_tagprovider`, `ign_tagname`, `ign_fullpath`, `imaginary`
 - For each extracted iFIX tag (with WATH. prefix and trailing colon removed):
@@ -143,7 +149,7 @@ Use the CSV lookup file located at `src\ifix_to_ign_010152026.csv`:
 - **CRITICAL STOPPING CONDITION:** If any iFIX tag cannot be found in the lookup:
   - Report all unmatched tags to the user
   - List the report file name and the specific tags that have no match
-  - Generate a mismatch summary file in the `eris\output\mismatches` directory (see `Mismatch Summary Generation` section)
+  - Generate a mismatch summary file in the `eris\output\reports\mismatches` directory (see `Mismatch Summary Generation` section)
   - **STOP ALL PROCESSING** - do not proceed with any conversion
   - Inform the user that the lookup table needs to be updated before conversion can proceed
 
@@ -152,7 +158,7 @@ Use the CSV lookup file located at `src\ifix_to_ign_010152026.csv`:
 When iFIX tags cannot be found in the lookup table, create a mismatch summary file:
 
 1. **Create mismatch summary markdown file:**
-   - Location: `eris\output\mismatches` directory
+   - Location: `eris\output\reports\mismatches` directory
    - Filename: Same base name as the report file with `.md` extension
    - Example: For `Daily Flow Check - Rural v6G.rptdesign`, create `Daily Flow Check - Rural v6G.md`
 
@@ -192,7 +198,7 @@ When iFIX tags cannot be found in the lookup table, create a mismatch summary fi
    
    ## Required Action
    
-   **The lookup table at `src\ifix_to_ign_010152026.csv` must be updated with the missing iFIX tag entries before this report can be converted.**
+   **The lookup table at `src\ifix_to_ign_2026_02_19.csv` must be updated with the missing iFIX tag entries before this report can be converted.**
    
    Add entries to the lookup table for all tags listed in the "Tags NOT Found in Lookup" section above. Each entry should include:
    - `hist_tagname`: The iFIX tag name (without WATH. prefix)
@@ -235,7 +241,7 @@ If all iFIX tags are successfully matched in the lookup:
 When user confirms conversion, process each report file:
 
 1. **Create output copy:**
-   - Create a copy of the original .rptdesign file in the `eris\output\reports` directory
+   - Create a copy of the original .rptdesign file in the `eris\output\reports\completed` directory
    - Use the same filename as the original
    - If file already exists in output directory, overwrite it
 
@@ -244,7 +250,9 @@ When user confirms conversion, process each report file:
    - Apply the following transformation:
      - Add prefix `IGNW.`
      - Replace all forward slash characters `/` with dashes `-`
-   - Example: If `ign_tagname` is `Plant/Pumps/P101/FlowRate`, transform to `IGNW.Plant-Pumps-P101-FlowRate`
+     - Replace all space characters with underscores `_`
+     - Convert entire path (except prefix) to lowercase
+   - Example: If `ign_tagname` is `Plant/Pumps/P101/Flow Rate`, transform to `IGNW.plant-pumps-p101-flow_rate`
 
 3. **Pre-conversion instance count:**
    - Before making ANY changes, count total instances of each iFIX tag path in the original file
@@ -257,10 +265,13 @@ When user confirms conversion, process each report file:
      - **XML queryText format:** Within URL query parameters (e.g., `Tag1.0:WATH.MTPSVR2.P101_FLOW:esrMaxGap`)
    - Replace `WATH.[tag_path]` with the transformed Ignition tag path `IGNW.[transformed_path]` in ALL occurrences
    - Examples:
-     - JSON: Replace `"tag" : "WATH.MTPSVR2.P101_FLOW"` with `"tag" : "IGNW.Plant-Pumps-P101-FlowRate"`
-     - queryText: Replace `Tag1.0:WATH.MTPSVR2.P101_FLOW:esrMaxGap` with `Tag1.0:IGNW.Plant-Pumps-P101-FlowRate:esrMaxGap`
+     - JSON: Replace `"tag" : "WATH.MTPSVR2.P101_FLOW"` with `"tag" : "IGNW.plant-pumps-p101-flowrate"`
+     - queryText: Replace `Tag1.0:WATH.MTPSVR2.P101_FLOW:esrMaxGap` with `Tag1.0:IGNW.plant-pumps-p101-flowrate:esrMaxGap`
    - Ensure all instances are replaced throughout the entire XML document
    - Use Python's `str.replace()` method which replaces ALL occurrences regardless of context (works for both formats)
+   - **Additional string replacements:**
+     - Replace all occurrences of `:lab:` with `:esrLab:` throughout the XML document
+     - Use Python's `str.replace()` method: `content.replace(':lab:', ':esrLab:')`
 
 5. **Verify replacement:**
    - Reference the `Conversion Verification` subsection in `Required Tools and Approaches` for proper validation methods
@@ -278,28 +289,33 @@ When user confirms conversion, process each report file:
    - Report verification results showing: WATH remaining (expected: 0), IGNW found (expected: [total instances])
    - If counts don't match expectations exactly, report detailed error and ask user to investigate
 
-6. **CRITICAL SANITY CHECK - WATH. Text Verification:**
+6. **CRITICAL SANITY CHECK - Data Tag Verification:**
    - **THIS CHECK IS MANDATORY AND MUST NOT BE SKIPPED**
    - After all replacements are complete, perform a final sanity check on the converted file
-   - Search the ENTIRE converted file for ANY occurrence of the text "WATH." (case-sensitive)
-   - Use Python's `in` operator or simple string search: `'WATH.' in file_content`
+   - **Verify all DATA iFIX tags were converted (excluding calculated/derived tags):**
+     - Search for pure `WATH.` data tags using pattern: `r'(?<!T\.)WATH\.[A-Z0-9_.]+'` (negative lookbehind to exclude ET.WATH.)
+     - This should return 0 matches if all data tags were converted
+   - **Verify calculated tags are preserved (expected behavior):**
+     - Calculated tags with prefixes (ET.WATH., MDPH.WATH., etc.) should remain in the file unchanged
+     - This is EXPECTED and CORRECT - no action needed
    - **CRITICAL REQUIREMENT:**
-     - If "WATH." is found ANYWHERE in the converted file, the conversion has FAILED
-     - Report exact count of "WATH." occurrences found
-     - Report the first few lines containing "WATH." for debugging
+     - If pure `WATH.` data tags (without ET. or other prefixes) are found in the converted file, conversion has FAILED
+     - Report exact count of unconverted data tags found
+     - Report the first few unconverted tags for debugging
      - STOP processing immediately and inform user that manual investigation is required
      - DO NOT generate conversion summary or mark conversion as successful
    - **SUCCESS CRITERIA:**
-     - The text "WATH." MUST NOT appear anywhere in the converted file
+     - Pure `WATH.` data tags MUST equal 0 (all converted)
+     - Calculated tags with prefixes (ET.WATH., etc.) may be present and is expected
      - Only if this check passes can the conversion be considered complete
-   - Report result: "WATH. sanity check: PASSED" or "WATH. sanity check: FAILED - [count] occurrences found"
+   - Report result: "Data tag sanity check: PASSED (0 unconverted WATH. data tags)" or "Data tag sanity check: FAILED - [count] unconverted data tags found"
 
 ## Summary Generation
 
 After completing conversion for each report file:
 
 1. **Create summary markdown file:**
-   - Location: `eris\output\conversion_summary` directory
+   - Location: `eris\output\reports\conversion_summary` directory
    - Filename: Same base name as the report file with `.md` extension
    - Example: For `Daily Flow Check - Rural v6G.rptdesign`, create `Daily Flow Check - Rural v6G.md`
 
@@ -312,7 +328,7 @@ After completing conversion for each report file:
    
    **Conversion Date:** [Month Day, Year HH:MM AM/PM]
    **Original File:** `eris\input\reports\[filename]`
-   **Converted File:** `eris\output\reports\[filename]`
+   **Converted File:** `eris\output\reports\completed\[filename]`
    
    ## Conversion Statistics
    
@@ -324,25 +340,26 @@ After completing conversion for each report file:
    
    | iFIX Tag Path | Ignition Tag Name (Lookup) | Formatted Ignition Tag Path | Instances Replaced |
    |---------------|----------------------------|----------------------------|-------------------|
-   | WATH.[tag] | [ign_tagname] | IGNW.[formatted] | [count] |
+   | WATH.[tag] | [ign_tagname] | IGNW.[formatted_lowercase] | [count] |
    
    ## Conversion Details
    
    Successfully converted all [total instances] instances of [unique count] unique iFIX tag paths to their Ignition equivalents.
    
    **Verification:**
-   - WATH tags remaining in output file: [count, should be 0]
+   - Data WATH tags remaining in output file: [count, should be 0]
    - IGNW tags in output file: [count, should match total instances]
-   - WATH. sanity check: ✓ PASSED (no occurrences found)
+   - Calculated tags (ET.WATH.*, etc.) preserved: [count] (expected, unchanged)
+   - Data tag sanity check: ✓ PASSED (no unconverted WATH. data tags)
    - Conversion status: ✓ Complete
    
    **Tag Format Transformation:**
    - iFIX formats: 
      - JSON: `"tag" : "WATH.[server].[tag_path]"` 
      - XML queryText: `Tag[number]:WATH.[server].[tag_path]:[parameters]`
-   - Ignition formats:
-     - JSON: `"tag" : "IGNW.[formatted_path]"` (forward slashes replaced with dashes)
-     - XML queryText: `Tag[number]:IGNW.[formatted_path]:[parameters]` (forward slashes replaced with dashes)
+   - Ignition formats (IGNW prefix uppercase, path lowercase):
+     - JSON: `"tag" : "IGNW.[formatted_path]"` (forward slashes replaced with dashes, spaces replaced with underscores, path lowercase)
+     - XML queryText: `Tag[number]:IGNW.[formatted_path]:[parameters]` (forward slashes replaced with dashes, spaces replaced with underscores, path lowercase)
    
    All tag paths were successfully validated against the lookup table and converted according to the specified transformation rules.
    ```
